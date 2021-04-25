@@ -55,9 +55,11 @@ php artisan serve
 ```
 
 - The vue interface was developed, run the following commands to assure that it works properly 
+```
 npm install
 npm install vuex --save
 npm run dev # or npm run watch 
+```
 
 - Finally you can access the API in the browser using:
 http://localhost:8000
