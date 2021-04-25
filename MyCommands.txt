@@ -1,0 +1,26 @@
+- Creating migration:
+php artisan make:migration create_games_table
+
+- Apply migrations
+php artisan migrate
+
+- Create Controller and Model
+php artisan make:model Game
+
+- Create game required methods 
+
+- Create Factory and Seed
+
+- Create web api routes
+
+
+### QUERY Leaderboard
+SELECT player_name, 
+    count(player_name) AS GAMES, 
+    COUNT(CASE WHEN is_player_winner THEN 1 END) AS WINS,
+    COUNT(CASE WHEN NOT is_player_winner THEN 1 END) AS LOSSES
+FROM games  
+GROUP BY player_name;
+
+
+$leaderboard = DB::table('games')->selectRaw('player_name,count(player_name) AS GAMES, COUNT(CASE WHEN is_player_winner THEN 1 END) AS WINS, COUNT(CASE WHEN NOT is_player_winner THEN 1 END) AS LOSSES')->groupBy('player_name')->get();
